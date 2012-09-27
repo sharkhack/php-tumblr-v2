@@ -14,7 +14,7 @@ require_once('config.php');
 require_once('php-tumblr.php');
 
 if(isset($_SESSION['tumblr_oauth_token']) && isset($_SESSION['tumblr_oauth_token_secret']) && isset($_REQUEST['oauth_verifier'])){
-	$tumblr = new TumblrOAuth(CONSUMER_KEY, CONSUMER_SECRET, $_SESSION['tumblr_oauth_token'], $_SESSION['tumblr_oauth_token_secret']);
+	$tumblr = new Tumblr(CONSUMER_KEY, CONSUMER_SECRET, $_SESSION['tumblr_oauth_token'], $_SESSION['tumblr_oauth_token_secret']);
 	$access_token = $tumblr->getAccessToken($_REQUEST['oauth_verifier']);
 
 	if($tumblr->isResponseSuccess==true){

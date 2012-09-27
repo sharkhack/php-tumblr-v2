@@ -17,7 +17,7 @@ if(isset($_SESSION['tumblr_oauth_token']) && isset($_SESSION['tumblr_oauth_token
 
 	$params = array("data" => array(file_get_contents($_FILES['img_file']['tmp_name'])), "type" => "photo","caption"=>'image caption');
 
-	$tumblr = new TumblrOAuth(CONSUMER_KEY, CONSUMER_SECRET, $_SESSION['tumblr_oauth_token'], $_SESSION['tumblr_oauth_token_secret']);
+	$tumblr = new Tumblr(CONSUMER_KEY, CONSUMER_SECRET, $_SESSION['tumblr_oauth_token'], $_SESSION['tumblr_oauth_token_secret']);
 
 	$yourblogname = $_SESSION['tumblr_used_blog_name'];
 	$yourblogname = substr($yourblogname,0,-1);
