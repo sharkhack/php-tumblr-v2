@@ -18,9 +18,6 @@ if(isset($_SESSION['tumblr_oauth_token']) && isset($_SESSION['tumblr_oauth_token
 	$access_token = $tumblr->getAccessToken($_REQUEST['oauth_verifier']);
 
 	if($tumblr->isResponseSuccess==true){
-		setcookie("th_at_ot",$atok_,time()+3600,'/','.befunky.com');	
-		setcookie("th_at_ots",$atoks_,time()+3600,'/','.befunky.com');
-
 		$_SESSION['tumblr_oauth_token'] = $access_token['oauth_token'];
 		$_SESSION['tumblr_oauth_token_secret'] = $access_token['oauth_token_secret'];
 	} else {
