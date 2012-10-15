@@ -17,17 +17,21 @@ $tumblr = new Tumblr(CONSUMER_KEY, CONSUMER_SECRET);
 
 $request_token = $tumblr->getRequestToken(OAUTH_CALLBACK);
 
-
 $_SESSION['tumblr_oauth_token'] = $request_token['oauth_token'];
 $_SESSION['tumblr_oauth_token_secret'] = $request_token['oauth_token_secret'];
 
+
+
 if($tumblr->isResponseSuccess==true){
-	$tumblrAutorizeUrl = $connection->getAuthorizeURL($token);
-	header('Location: ' . $tumblrAutorizeUrl); 
-	echo '<script language="javascript">location.href = "'.$tumblrAutorizeUrl.'";</script>';
+	echo('1');
+	$tumblrAuthorizeUrl = $tumblr->getAuthorizeURL($request_token);
+
+	header('Location: ' . $tumblrAuthorizeUrl); 
+	echo '<script language="javascript">location.href = "'.$tumblrAuthorizeUrl.'";</script>';
 } else {
 	echo 'Error';
 }
 
+print_r(get_defined_vars());
+
 exit();
-?>

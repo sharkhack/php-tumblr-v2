@@ -11,7 +11,6 @@
 
 require_once('OAuth.php');
 
-
 class Tumblr{
 
 	  public $isResponseSuccess = false;
@@ -21,10 +20,10 @@ class Tumblr{
 	  public $responseFormat = 'json';
 	  public $isJsonDecode = true;
 	 
-	  private accessTokenURL='http://www.tumblr.com/oauth/access_token';
-	  private authenticateURL= 'http://www.tumblr.com/oauth/authorize'; 
-	  private authorizeURL= 'http://www.tumblr.com/oauth/authorize';
-	  private requestTokenURL='http://www.tumblr.com/oauth/request_token';
+	  private $accessTokenURL='http://www.tumblr.com/oauth/access_token';
+	  private $authenticateURL= 'http://www.tumblr.com/oauth/authorize'; 
+	  private $authorizeURL= 'http://www.tumblr.com/oauth/authorize';
+	  private $requestTokenURL='http://www.tumblr.com/oauth/request_token';
 	  
 	  public function __construct(
 	  			$consumer_key, 
@@ -70,8 +69,11 @@ class Tumblr{
 	    if (!empty($oauth_verifier)) {
 	      $parameters['oauth_verifier'] = $oauth_verifier;
 	    }
+
 	    $request = $this->oAuthRequest($this->accessTokenURL, 'GET', $parameters);
+
 	    $token = OAuthUtil::parse_parameters($request);
+
 	    $this->token = new OAuthConsumer($token['oauth_token'], $token['oauth_token_secret']);
 	    return $token;
 	  }
@@ -152,4 +154,3 @@ class Tumblr{
 	    return strlen($header);
 	  }
 }
-?>
