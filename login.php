@@ -32,6 +32,4 @@ if($tumblr->isResponseSuccess==true){
 	echo 'Error';
 }
 
-print_r(get_defined_vars());
-
 exit();
