@@ -20,6 +20,8 @@ if(isset($_SESSION['tumblr_oauth_token']) && isset($_SESSION['tumblr_oauth_token
 	if($tumblr->isResponseSuccess==true){
 		$_SESSION['tumblr_oauth_token'] = $access_token['oauth_token'];
 		$_SESSION['tumblr_oauth_token_secret'] = $access_token['oauth_token_secret'];
+
+		exit('Success! Stored OAuth token and secret in session. <a href="test-user-info.php">test-user-info.php</a>');
 	} else {
 		header('Location: login.php');
 	}
@@ -28,4 +30,3 @@ if(isset($_SESSION['tumblr_oauth_token']) && isset($_SESSION['tumblr_oauth_token
 }
 
 exit();
-?>

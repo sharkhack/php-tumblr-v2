@@ -13,16 +13,17 @@ session_start();
 require_once('config.php');
 require_once('php-tumblr.php');
 
-if(isset($_SESSION['tumblr_oauth_token']) && isset($_SESSION['tumblr_oauth_token_secret']) && isset($_SESSION['tumblr_used_blog_name']) && !empty($_FILES)){
+if (isset($_SESSION['tumblr_oauth_token']) && isset($_SESSION['tumblr_oauth_token_secret']) && isset($_SESSION['tumblr_used_blog_name'])) {
 
-	$params = array("data" => array(file_get_contents($_FILES['img_file']['tmp_name'])), "type" => "photo","caption"=>'image caption');
+	$test_data = file_get_contents('test.jpg');
+	$params = array("data" => array($test_data), 'type' => 'photo', 'caption' => 'bmo');
 
 	$tumblr = new Tumblr(CONSUMER_KEY, CONSUMER_SECRET, $_SESSION['tumblr_oauth_token'], $_SESSION['tumblr_oauth_token_secret']);
 
 	$yourblogname = $_SESSION['tumblr_used_blog_name'];
 	$yourblogname = substr($yourblogname,0,-1);
 	$yourblogname = substr($yourblogname,7);
-		
+
 	// tumblr photo or content post url
 	$uri = "http://api.tumblr.com/v2/blog/$yourblogname/post";
 
@@ -35,4 +36,3 @@ if(isset($_SESSION['tumblr_oauth_token']) && isset($_SESSION['tumblr_oauth_token
 }
 
 exit();
-?>

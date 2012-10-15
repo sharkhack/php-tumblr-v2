@@ -9,9 +9,6 @@
  *Reference Tumblr API : http://www.tumblr.com/docs/en/api/v2
 */
 
-
 define("TUMBLR_CONSUMER_KEY", "your consumer key");
 define("TUMBLR_CONSUMER_SECRET", "your consumer secret");
-define('OAUTH_CALLBACK', 'http://www.example.com/callback.php');
-
-?>
+define('OAUTH_CALLBACK', "http://www.example.com/callback.php");
